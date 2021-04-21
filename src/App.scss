@@ -1,0 +1,133 @@
+
+//Variables for colors and borders
+$GreenColor: #2eaf5f;
+$ColorWhite: #ffffff;
+$ColorDark: rgba(1,1,1,0.35);
+$ColorSecondaryDark: rgba(1,1,1,0.35);
+$Border: 1px solid rgba(1,1,1,.1);
+$Cursor: pointer;
+
+//Mixin for common css
+@mixin  customStyling{
+    background-color: $ColorWhite;
+    color: black;
+    border: $Border;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 6px;
+}
+//Mixin for height and width
+@mixin customHeightWidth($height,$width){
+    height: $height;
+    width: $width;
+}
+
+.card{
+  @include customHeightWidth(437px,450px);
+    background: $ColorWhite;
+    padding: 50px;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 10px 0 rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+
+  img{
+    height: 33px;
+  }
+
+  .FormTitle{
+    h1{
+      margin-top: 35px;
+      margin-left: -2px;
+      font-size: 35px;
+      color: #4c494b;
+    }
+
+    p{
+      margin-top: -12px;
+      margin-left: -2px;
+      margin-bottom: 50px;
+      font-size: 18px;
+      color: $ColorDark;
+    }
+  }
+
+  label{
+    color: $ColorSecondaryDark;
+    margin-left: -2px;
+  }
+
+  input[type=text]{
+    @include customStyling();
+    @include customHeightWidth(45px,99%);
+    text-align: left;
+    margin: 10px 0 7px 0;
+    text-indent:15px;
+  }
+
+  span{
+    color: red;
+  }
+
+  input[type=checkbox]{
+    transform: scale(1.5);
+    cursor: $Cursor;
+  }
+
+  .RememberDeviceDiv{
+    margin-top:15px;
+
+    .RememberDevice{
+      margin-left: 10px;
+      font-size: smaller;
+      color: rgb(76, 73, 75);
+      cursor: $Cursor;
+    }
+  }
+
+  button{
+    @include customStyling();
+    padding: 15px 42px;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 60px;
+    &:hover{
+      background-color:$GreenColor;
+    }
+  }
+}
+
+//Start of media queries to enhance responsiveness on different devices
+$breakpoint-tablet: 668px;
+$breakpoint-Mobile: 468px;
+@media (max-width: $breakpoint-tablet) {
+.card{
+    width: 350px;
+    }
+}
+
+@media (max-width: $breakpoint-Mobile) {
+
+  .card{
+    @include customHeightWidth(500px,250px);
+    padding: 35px;
+
+    input[type=text]{
+      @include customHeightWidth(42px,96%);
+    }
+
+    .FormTitle {
+      h1 {
+        font-size:23px !important;
+      }
+
+      p{
+        font-size:16px !important;
+      }
+    }
+  }
+}
